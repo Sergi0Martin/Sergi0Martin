@@ -1,0 +1,49 @@
+---
+const personalImageAlt = "Sergio Martin";
+import Badge from "@/components/Badge.astro";
+import LinkedInIcon from "@/components/icons/LinkedIn.astro";
+import GitHubInIcon from "@/components/icons/GitHub.astro";
+import SocialPill from "@/components/SocialPill.astro";
+---
+
+<div class="max-w-xl">
+  <div class="flex gap-4 mb-4">
+    <img
+      class="rounded-full shadow-lg size-16"
+      src="/foto_perfil_color.png"
+      alt={personalImageAlt}
+    />
+    <a
+      href="https://linkedin.com/in/smartin-dev"
+      target="_blank"
+      rel="noopener"
+      class="flex items-center transition md:justify-center md:hover:scale-105"
+    >
+      <!-- <Badge>Disponible para trabajar</Badge> -->
+      <Badge>Senior Developer</Badge>
+    </a>
+  </div>
+  <h1
+    class="text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white"
+  >
+    Hola, soy Sergio
+  </h1>
+  <p
+    class="mt-6 text-xl text-gray-800 [&>strong]:font-semibold dark:text-gray-300"
+  >
+    +{new Date().getFullYear() - 2016} años de experiencia.
+    <strong>Desarrollador de Software Senior</strong> de Girona, España 🇪🇸. Especializado
+    en el desarrollo de aplicaciones cloud de <strong>Azure</strong> y en el uso de tecnologías
+    como <strong>Angular</strong> y <strong>C#</strong>.
+  </p>
+  <nav class="flex flex-wrap gap-4 mt-8">
+    <SocialPill href="https://linkedin.com/in/smartin-dev">
+      <LinkedInIcon class="size-4" />
+      LinkedIn
+    </SocialPill>
+    <SocialPill href="https://github.com/Sergi0Martin">
+      <GitHubInIcon class="size-4" />
+      GitHub
+    </SocialPill>
+  </nav>
+</div>

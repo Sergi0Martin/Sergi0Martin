@@ -1,5 +1,5 @@
 ---
-import ThemeToggle from "./ThemeToggle.astro"
+import ThemeToggle from "./ThemeToggle.astro";
 
 const navItems = [
   {
@@ -22,7 +22,7 @@ const navItems = [
     label: "contacto",
     url: "https://www.linkedin.com/in/smartin-dev/",
   },
-]
+];
 ---
 
 <header
@@ -48,58 +48,88 @@ const navItems = [
 
 <script>
   document.addEventListener("astro:page-load", () => {
-    const sections = document.querySelectorAll("section")
-    const navItems = document.querySelectorAll("header nav a")
+    const sections = document.querySelectorAll("section");
+    const navItems = document.querySelectorAll("header nav a");
 
     const callback = (entries: any[]) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           navItems.forEach((item) => {
             if (item.getAttribute("aria-label") == entry.target.id) {
-              item.classList.add("selected-item")
-              item.classList.add("font-bold")
+              item.classList.add("selected-item");
+              // item.classList.add("font-bold")
             } else {
-              item.classList.remove("selected-item")
-              item.classList.remove("font-bold")
+              item.classList.remove("selected-item");
+              // item.classList.remove("font-bold")
             }
-          })
+          });
         }
-      })
-    }
+      });
+    };
 
     const observer = new IntersectionObserver(callback, {
       root: null,
       rootMargin: "0px",
       threshold: 0.3,
-    })
+    });
 
     sections.forEach((section) => {
-      observer.observe(section)
-    })
+      observer.observe(section);
+    });
 
     // Cleanup function
     document.onvisibilitychange = () => {
       if (document.visibilityState === "hidden") {
-        observer.disconnect()
+        observer.disconnect();
       } else {
         sections.forEach((section) => {
-          observer.observe(section)
-        })
+          observer.observe(section);
+        });
       }
-    }
-  })
+    };
+  });
 </script>
 
 <style>
-  nav {
-    animation: nav-shadown 1s linear both;
-    animation-timeline: scroll();
-    animation-range: 0 100px;
+  @media only screen and (min-width: 600px) {
+    nav {
+      font-size: large;
+      animation: nav-shadown-big-screen 1s linear both;
+      animation-timeline: scroll();
+      animation-range: 0 100px;
+    }
   }
 
-  @keyframes nav-shadown {
+  @media only screen and (max-width: 600px) {
+    nav {
+      font-size: smaller;
+      margin-left: 3px;
+      margin-right: 3px;
+      animation: nav-shadown-small-screen 1s linear both;
+      animation-timeline: scroll();
+      animation-range: 0 100px;
+    }
+  }
+
+  @keyframes nav-shadown-big-screen {
     to {
-      @apply shadow-lg ring-1 backdrop-blur dark:bg-gray-800/90 bg-white/50 ring-white/100;
+      box-shadow:
+        0 10px 15px -3px rgb(0 0 0 / 0.1),
+        0 4px 6px -4px rgb(0 0 0 / 0.1);
+      @apply ring-1 ring-white/100 bg-white/90;
+      transform: scale(0.8);
+      color: grey;
+    }
+  }
+
+  @keyframes nav-shadown-small-screen {
+    to {
+      box-shadow:
+        0 10px 15px -3px rgb(0 0 0 / 0.1),
+        0 4px 6px -4px rgb(0 0 0 / 0.1);
+      @apply ring-1 ring-white/100 bg-white/90;
+      transform: scale(0.8);
+      color: grey;
     }
   }
 </style>

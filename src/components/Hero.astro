@@ -24,17 +24,17 @@ import SocialPill from "@/components/SocialPill.astro";
     </a>
   </div>
   <h1
-    class="text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white"
+    class="typing text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white"
   >
-    Hola, soy Sergio
+    Hola 👋, soy Sergio
   </h1>
   <p
     class="mt-6 text-xl text-gray-800 [&>strong]:font-semibold dark:text-gray-300"
   >
     +{new Date().getFullYear() - 2016} años de experiencia.
     <strong>Desarrollador de Software Senior</strong> de Girona, España 🇪🇸. Especializado
-    en el desarrollo de aplicaciones cloud de <strong>Azure</strong> y en el uso de tecnologías
-    como <strong>Angular</strong> y <strong>C#</strong>.
+    en el desarrollo de aplicaciones cloud de <strong>Azure</strong> y en el uso
+    de tecnologías como <strong>Angular</strong> y <strong>C#</strong>.
   </p>
   <nav class="flex flex-wrap gap-4 mt-8">
     <SocialPill href="https://linkedin.com/in/smartin-dev">
@@ -47,3 +47,25 @@ import SocialPill from "@/components/SocialPill.astro";
     </SocialPill>
   </nav>
 </div>
+
+<!-- <style>
+  .typing {
+    /* width: 473px; */
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid #7e2ea0;
+    animation:
+      typing 3s ,
+      cursor 0.8s steps(5, end) infinite;
+  }
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+  }
+  @keyframes cursor {
+    to {
+      border-color: transparent;
+    }
+  }
+</style> -->

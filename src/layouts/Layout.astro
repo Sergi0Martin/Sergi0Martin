@@ -35,94 +35,93 @@ const { description, title } = Astro.props;
     <Header />
     <slot />
     <Footer />
-    <style is:global>
-      :root {
-        color-scheme: light dark;
-      }
+  </body><style is:global>
+    :root {
+      color-scheme: light dark;
+    }
 
+    html {
+      font-family: "Onest Variable", system-ui, sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      overscroll-behavior: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
       html {
-        font-family: "Onest Variable", system-ui, sans-serif;
-        scroll-behavior: smooth;
+        scroll-behavior: auto;
+      }
+    }
+
+    [data-theme="light"] {
+      strong {
+        color: rgb(59, 130, 246) !important;
       }
 
-      body {
+      .selected-item {
+        color: rgb(59, 130, 246) !important;
+      }
+    }
+
+    [data-theme="dark"] {
+      strong {
+        color: rgb(253, 224, 71) !important;
+      }
+
+      .selected-item {
+        color: rgb(253, 224, 71) !important;
+      }
+    }
+
+    #header-nav {
+      animation: blur linear both 0.5s;
+      animation-timeline: scroll();
+      animation-range: 0 500px;
+    }
+
+    @keyframes blur {
+      to {
+        backdrop-filter: blur(20px);
+        border-width: 1px;
+        border-color: rgba(0, 0, 0);
+        padding: 0.25rem 0.75rem;
         display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-        overscroll-behavior: none;
+        flex-direction: row;
+        align-items: center;
+        background-color: rgb(229, 229, 229);
+        border-radius: 9999px;
       }
+    }
 
-      @media (prefers-reduced-motion: reduce) {
-        html {
-          scroll-behavior: auto;
-        }
-      }
-
-      [data-theme="light"] {
-        strong {
-          color: rgb(59, 130, 246) !important;
-        }
-
-        .selected-item {
-          color: rgb(59, 130, 246) !important;
-        }
-      }
-
-      [data-theme="dark"] {
-        strong {
-          color: rgb(253, 224, 71) !important;
-        }
-
-        .selected-item {
-          color: rgb(253, 224, 71) !important;
-        }
-      }
-
-      #header-nav {
-        animation: blur linear both 0.5s;
-        animation-timeline: scroll();
-        animation-range: 0 500px;
-      }
-
+    @media (prefers-color-scheme: dark) {
       @keyframes blur {
+        from {
+          border: 0px;
+        }
         to {
+          box-shadow:
+            0px 5px 50px -5px rgba(0, 0, 0, 0.1),
+            0px 0px 0 1px rgba(0, 0, 0, 0.3);
+          background: rgba(0, 0, 0, 0.3);
           backdrop-filter: blur(20px);
           border-width: 1px;
           border-color: rgba(0, 0, 0);
-          padding: 0.25rem 0.75rem;
+          padding-left: 0.75rem;
+          padding-right: 0.75rem;
+          padding-top: 0.25rem;
+          padding-bottom: 0.25rem;
           display: flex;
           flex-direction: row;
           align-items: center;
-          background-color: rgb(229, 229, 229);
+          background-color: rgba(0, 0, 0, 0.3);
           border-radius: 9999px;
         }
       }
-
-      @media (prefers-color-scheme: dark) {
-        @keyframes blur {
-          from {
-            border: 0px;
-          }
-          to {
-            box-shadow:
-              0px 5px 50px -5px rgba(0, 0, 0, 0.1),
-              0px 0px 0 1px rgba(0, 0, 0, 0.3);
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(20px);
-            border-width: 1px;
-            border-color: rgba(0, 0, 0);
-            padding-left: 0.75rem;
-            padding-right: 0.75rem;
-            padding-top: 0.25rem;
-            padding-bottom: 0.25rem;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            background-color: rgba(0, 0, 0, 0.3);
-            border-radius: 9999px;
-          }
-        }
-      }
-    </style>
-  </body>
+    }
+  </style>
 </html>

@@ -20,6 +20,7 @@ const navItems = [
   {
     title: "Contacto",
     label: "contacto",
+    external: true,
     url: "https://www.linkedin.com/in/smartin-dev/",
   },
 ];
@@ -36,6 +37,7 @@ const navItems = [
         <a
           class="relative block px-2 py-2 transition hover:font-black dark:hover:font-black"
           aria-label={link.label}
+          target={link.external ? "_blank" : "_self"}
           href={link.url}
         >
           {link.title}

@@ -16,5 +16,6 @@ export default defineConfig({
       }
     }
   },
-  site: 'https://Sergi0Martin.github.io',
+  site: 'https://sergi0martin.github.io',
+  base: '/Sergi0Martin'
 })
